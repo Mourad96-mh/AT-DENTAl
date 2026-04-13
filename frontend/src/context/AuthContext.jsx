@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react'
+import { API_BASE } from '../config'
 
 const AuthContext = createContext(null)
 
@@ -18,7 +19,7 @@ export function AuthProvider({ children }) {
   const isAuth = !!token
 
   const authFetch = async (url, options = {}) => {
-    const res = await fetch(url, {
+    const res = await fetch(`${API_BASE}${url}`, {
       ...options,
       headers: {
         'Content-Type': 'application/json',

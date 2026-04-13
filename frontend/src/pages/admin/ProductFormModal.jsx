@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../../context/AuthContext'
+import { API_BASE } from '../../config'
 
 const CATEGORIES = [
   { id: 'usage-unique', label: 'Usage Unique' },
@@ -64,7 +65,7 @@ export default function ProductFormModal({ product, onClose, onSaved }) {
     try {
       const fd = new FormData()
       fd.append('image', file)
-      const res = await fetch('/api/upload', {
+      const res = await fetch(`${API_BASE}/api/upload`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: fd,
