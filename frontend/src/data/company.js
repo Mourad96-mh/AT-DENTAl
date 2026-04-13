@@ -1,0 +1,16 @@
+export const COMPANY = {
+  name: 'AT Dental',
+  tagline: 'Votre Partenaire Médical et Dentaire',
+  taglineEn: 'Your Medical and Dental Partner',
+  phone1: '05 24 49 62 62',
+  phone1Href: 'tel:+212524496262',
+  phone2: '06 62 57 56 84',
+  phone2Href: 'tel:+212662575684',
+  whatsapp: '212630368831',
+  whatsappDisplay: '+212 630-368-831',
+  email: 'atdental2024@gmail.com',
+  address: '187, Lotissement Safsaf - Marrakech',
+  city: 'Marrakech, Maroc',
+  hours: 'Lun – Sam : 9h00 – 18h00',
+  hoursEn: 'Mon – Sat: 9:00 AM – 6:00 PM',
+}
