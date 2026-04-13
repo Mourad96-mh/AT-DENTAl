@@ -110,6 +110,20 @@
   color: var(--color-accent-light);
 }
 
+.logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-logo-img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
 /* Nav */
 .nav {
   display: flex;

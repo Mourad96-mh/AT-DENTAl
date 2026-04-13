@@ -80,10 +80,7 @@ export default function Navbar() {
       <div className={`header-main${scrolled ? ' scrolled' : ''}`}>
         <div className="container header-inner">
           <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
-            <div className="logo-mark">🦷</div>
-            <div className="logo-text">
-              AT <span>Dental</span>
-            </div>
+            <img src="/images/logo.png" alt="AT Dental" className="logo-img" />
           </Link>
 
           <nav className="nav">

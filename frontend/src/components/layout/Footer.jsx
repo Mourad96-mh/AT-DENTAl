@@ -18,8 +18,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="footer-logo">
-              <div className="logo-mark" style={{ width: 34, height: 34, fontSize: '1rem' }}>🦷</div>
-              <span>AT <span style={{ color: 'var(--color-accent-light)' }}>Dental</span></span>
+              <img src="/images/logo.png" alt="AT Dental" className="footer-logo-img" />
             </div>
             <p className="footer-tagline">{t('footer.tagline')}</p>
           </div>
