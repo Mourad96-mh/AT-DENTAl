@@ -2,16 +2,36 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiMessageSquare, FiShoppingCart, FiCheck } from 'react-icons/fi'
-import { products } from '../../data/products'
 import { useCart } from '../../context/CartContext'
 import { formatPrice } from '../../utils/formatPrice'
+import { API_BASE } from '../../config'
 
 export default function FeaturedProducts() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { addItem } = useCart()
   const [added, setAdded] = useState({})
+  const [featured, setFeatured] = useState([])
   const sectionRef = useRef(null)
-  const featured = products.filter((p) => p.featured)
+  const lang = i18n.language === 'en' ? 'en' : 'fr'
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/products?featured=true&limit=20`)
+      .then((r) => r.json())
+      .then((data) => {
+        const items = (data.products || []).map((p) => ({
+          id: p._id,
+          name: p.name?.[lang] || p.name?.fr || '',
+          description: p.description?.[lang] || p.description?.fr || '',
+          brand: p.brand,
+          category: p.category,
+          image: p.images?.[0] || '',
+          price: p.price,
+        }))
+        setFeatured(items)
+      })
+      .catch(() => {})
+  }, [lang])
+
   const doubled = [...featured, ...featured]
 
   const handleAdd = (product) => {

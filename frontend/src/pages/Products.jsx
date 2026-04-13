@@ -2,11 +2,11 @@ import { useState, useMemo, useEffect } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiSearch, FiX, FiFilter, FiShoppingCart, FiCheck, FiPlus, FiMinus, FiEye } from 'react-icons/fi'
-import { products } from '../data/products'
 import { categories } from '../data/categories'
 import { brands } from '../data/brands'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '../utils/formatPrice'
+import { API_BASE } from '../config'
 
 export default function Products() {
   const { t, i18n } = useTranslation()
@@ -18,6 +18,28 @@ export default function Products() {
   const [activeCategory, setActiveCategory] = useState(searchParams.get('category') || '')
   const [activeBrand, setActiveBrand] = useState(searchParams.get('brand') || '')
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  const lang = i18n.language === 'en' ? 'en' : 'fr'
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/products?limit=200`)
+      .then((r) => r.json())
+      .then((data) => { setProducts(data.products || []); setLoading(false) })
+      .catch(() => setLoading(false))
+  }, [])
+
+  // Normalize API product fields for the template
+  const normalize = (p) => ({
+    id: p._id,
+    name: p.name?.[lang] || p.name?.fr || '',
+    description: p.description?.[lang] || p.description?.fr || '',
+    brand: p.brand,
+    category: p.category,
+    image: p.images?.[0] || '',
+    price: p.price,
+  })
 
   // Lock body scroll when mobile sidebar is open
   useEffect(() => {
@@ -30,13 +52,17 @@ export default function Products() {
   }, [sidebarOpen])
 
   const filtered = useMemo(() => {
-    return products.filter((p) => {
-      const matchCat = !activeCategory || p.category === activeCategory
-      const matchBrand = !activeBrand || p.brand.toLowerCase() === activeBrand.toLowerCase()
-      const matchSearch = !search || p.name.toLowerCase().includes(search.toLowerCase()) || p.description.toLowerCase().includes(search.toLowerCase())
-      return matchCat && matchBrand && matchSearch
-    })
-  }, [search, activeCategory, activeBrand])
+    return products
+      .filter((p) => {
+        const name = p.name?.[lang] || p.name?.fr || ''
+        const desc = p.description?.[lang] || p.description?.fr || ''
+        const matchCat = !activeCategory || p.category === activeCategory
+        const matchBrand = !activeBrand || p.brand?.toLowerCase() === activeBrand.toLowerCase()
+        const matchSearch = !search || name.toLowerCase().includes(search.toLowerCase()) || desc.toLowerCase().includes(search.toLowerCase())
+        return matchCat && matchBrand && matchSearch
+      })
+      .map(normalize)
+  }, [products, search, activeCategory, activeBrand, lang])
 
   const reset = () => {
     setSearch('')
@@ -195,7 +221,9 @@ export default function Products() {
             )}
           </div>
 
-          {filtered.length === 0 ? (
+          {loading ? (
+            <div className="admin-loading">Chargement des produits...</div>
+          ) : filtered.length === 0 ? (
             <div className="no-results">
               <div className="no-results-icon">🔍</div>
               <h3>{t('products.no_results')}</h3>
