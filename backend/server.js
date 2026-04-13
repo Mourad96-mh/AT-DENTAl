@@ -8,7 +8,14 @@ const Admin = require('./models/Admin')
 const app = express()
 
 // ── Middleware ────────────────────────────────────────────────
-app.use(cors())
+const allowedOrigins = process.env.FRONTEND_URL
+  ? [process.env.FRONTEND_URL]
+  : ['http://localhost:5173', 'http://localhost:3000']
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}))
 app.use(express.json())
 
 // ── Routes ───────────────────────────────────────────────────
@@ -18,14 +25,6 @@ app.use('/api/leads', require('./routes/leads'))
 app.use('/api/upload', require('./routes/upload'))
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }))
-
-// ── Serve frontend in production ──────────────────────────────
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/dist')))
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'))
-  })
-}
 
 // ── Database + startup ────────────────────────────────────────
 async function start() {
