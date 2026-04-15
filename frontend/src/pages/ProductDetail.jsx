@@ -1,11 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiArrowLeft, FiShoppingCart, FiCheck, FiPlus, FiMinus, FiTag, FiLayers } from 'react-icons/fi'
-import { products } from '../data/products'
 import { categories } from '../data/categories'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '../utils/formatPrice'
+import { API_BASE } from '../config'
+
+function normalize(p, lang) {
+  return {
+    id: p._id,
+    name: p.name?.[lang] || p.name?.fr || '',
+    description: p.description?.[lang] || p.description?.fr || '',
+    brand: p.brand,
+    category: p.category,
+    image: p.images?.[0] || '',
+    price: p.price,
+  }
+}
 
 const CATEGORY_FEATURES = {
   'usage-unique':      ['Usage unique stérile', 'Conforme aux normes EN ISO', 'Disponible en plusieurs tailles'],
@@ -30,10 +42,55 @@ export default function ProductDetail() {
   const navigate = useNavigate()
   const { addItem, items, setQty, removeItem } = useCart()
   const [added, setAdded] = useState(false)
+  const [product, setProduct] = useState(null)
+  const [related, setRelated] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [notFound, setNotFound] = useState(false)
 
-  const product = products.find((p) => p.id === parseInt(id, 10))
+  const lang = i18n.language === 'en' ? 'en' : 'fr'
 
-  if (!product) {
+  useEffect(() => {
+    setLoading(true)
+    setNotFound(false)
+    fetch(`${API_BASE}/api/products/${id}`)
+      .then((r) => {
+        if (!r.ok) { setNotFound(true); setLoading(false); return null }
+        return r.json()
+      })
+      .then((data) => {
+        if (!data) return
+        const p = normalize(data, lang)
+        setProduct(p)
+        // fetch related products (same category)
+        fetch(`${API_BASE}/api/products?category=${data.category}&limit=5`)
+          .then((r) => r.json())
+          .then((res) => {
+            setRelated(
+              (res.products || [])
+                .filter((r) => r._id !== data._id)
+                .slice(0, 4)
+                .map((r) => normalize(r, lang))
+            )
+          })
+          .catch(() => {})
+          .finally(() => setLoading(false))
+      })
+      .catch(() => { setNotFound(true); setLoading(false) })
+  }, [id])
+
+  if (loading) {
+    return (
+      <div className="pd-not-found">
+        <div className="container">
+          <div className="pd-not-found-inner">
+            <p>Chargement...</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (notFound || !product) {
     return (
       <div className="pd-not-found">
         <div className="container">
@@ -71,10 +128,6 @@ export default function ProductDetail() {
     if (qty <= 1) removeItem(product.id)
     else setQty(product.id, qty - 1)
   }
-
-  const related = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 4)
 
   return (
     <div className="pd-page">

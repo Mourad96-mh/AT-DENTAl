@@ -45,7 +45,7 @@ export default function Contact() {
   return (
     <div className="contact-page">
       {/* Page Hero */}
-      <div className="page-hero">
+      <div className="page-hero page-hero--contact">
         <div className="container page-hero-content">
           <h1 className="page-hero-title">{t('contact.page_title')}</h1>
           <p className="page-hero-subtitle">{t('contact.page_subtitle')}</p>

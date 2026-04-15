@@ -43,7 +43,7 @@ export default function About() {
   return (
     <div className="about-page" ref={ref}>
       {/* Page Hero */}
-      <div className="page-hero">
+      <div className="page-hero page-hero--about">
         <div className="container page-hero-content">
           <h1 className="page-hero-title">{t('about.page_title')}</h1>
           <p className="page-hero-subtitle">{t('about.page_subtitle')}</p>

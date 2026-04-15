@@ -1,22 +1,22 @@
 :root {
-  /* Primary — Deep medical blue */
-  --color-primary: #0d3b6e;
-  --color-primary-light: #1a5fa8;
-  --color-primary-dark: #082a50;
+  /* Primary — Deep purple (from logo) */
+  --color-primary: #6b2d9b;
+  --color-primary-light: #8b3fc0;
+  --color-primary-dark: #4a1f6e;
 
-  /* Accent — Clean teal/cyan */
-  --color-accent: #00a3c4;
-  --color-accent-light: #33c1dc;
-  --color-accent-dark: #007a94;
+  /* Accent — Hot pink / magenta (from logo) */
+  --color-accent: #e8198b;
+  --color-accent-light: #f050a8;
+  --color-accent-dark: #c0106e;
 
   /* Neutrals */
   --color-white: #ffffff;
-  --color-bg: #f4f8fc;
+  --color-bg: #faf6fc;
   --color-surface: #ffffff;
-  --color-border: #dde6f0;
-  --color-text: #1a2b3c;
-  --color-text-muted: #6b7c93;
-  --color-text-light: #a0afbf;
+  --color-border: #e8d8f0;
+  --color-text: #1a0a2e;
+  --color-text-muted: #7a6490;
+  --color-text-light: #b09cbf;
 
   /* Status */
   --color-success: #17a865;
@@ -24,9 +24,9 @@
   --color-error: #e53e3e;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #0d3b6e 0%, #1a5fa8 100%);
-  --gradient-accent: linear-gradient(135deg, #00a3c4 0%, #1a5fa8 100%);
-  --gradient-hero: linear-gradient(135deg, #082a50 0%, #0d3b6e 60%, #00a3c4 100%);
+  --gradient-primary: linear-gradient(135deg, #4a1f6e 0%, #6b2d9b 100%);
+  --gradient-accent: linear-gradient(135deg, #e8198b 0%, #6b2d9b 100%);
+  --gradient-hero: linear-gradient(135deg, #2d0f45 0%, #6b2d9b 60%, #e8198b 100%);
 
   /* Typography */
   --font-heading: 'Inter', 'Segoe UI', sans-serif;
@@ -82,10 +82,10 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(13, 59, 110, 0.08);
-  --shadow-md: 0 4px 16px rgba(13, 59, 110, 0.12);
-  --shadow-lg: 0 8px 32px rgba(13, 59, 110, 0.16);
-  --shadow-xl: 0 16px 48px rgba(13, 59, 110, 0.2);
+  --shadow-sm: 0 1px 3px rgba(107, 45, 155, 0.08);
+  --shadow-md: 0 4px 16px rgba(107, 45, 155, 0.14);
+  --shadow-lg: 0 8px 32px rgba(107, 45, 155, 0.18);
+  --shadow-xl: 0 16px 48px rgba(107, 45, 155, 0.24);
 
   /* Transitions */
   --transition-fast: 150ms ease;

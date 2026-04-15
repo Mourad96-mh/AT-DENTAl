@@ -107,7 +107,7 @@ export default function Products() {
   return (
     <div className="products-page">
       {/* Page Hero */}
-      <div className="page-hero">
+      <div className="page-hero page-hero--products">
         <div className="container page-hero-content">
           <h1 className="page-hero-title">{t('products.page_title')}</h1>
           <p className="page-hero-subtitle">{t('products.page_subtitle')}</p>

@@ -36,7 +36,7 @@ export default function Services() {
   return (
     <div className="services-page" ref={ref}>
       {/* Page Hero */}
-      <div className="page-hero">
+      <div className="page-hero page-hero--services">
         <div className="container page-hero-content">
           <h1 className="page-hero-title">{t('services.page_title')}</h1>
           <p className="page-hero-subtitle">{t('services.page_subtitle')}</p>

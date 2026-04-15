@@ -20,7 +20,7 @@ export const categories = [
     label: 'Empreinte',
     labelEn: 'Impressions',
     icon: '🦷',
-    color: '#0d3b6e',
+    color: '#6b2d9b',
     image: '/products/cat-empreinte.jpg',
   },
   {
@@ -36,7 +36,7 @@ export const categories = [
     label: 'Endodontie',
     labelEn: 'Endodontics',
     icon: '🔬',
-    color: '#00a3c4',
+    color: '#e8198b',
     image: '/products/cat-endodontie.jpg',
   },
   {
@@ -44,7 +44,7 @@ export const categories = [
     label: 'Ciment',
     labelEn: 'Cements',
     icon: '🏺',
-    color: '#1a5fa8',
+    color: '#8b3fc0',
     image: '/products/cat-ciment.jpg',
   },
   {
@@ -76,7 +76,7 @@ export const categories = [
     label: 'Instrumentation',
     labelEn: 'Instruments',
     icon: '🔧',
-    color: '#0d3b6e',
+    color: '#6b2d9b',
     image: '/products/cat-instrumentation.jpg',
   },
   {
@@ -84,7 +84,7 @@ export const categories = [
     label: 'Petit Équipement',
     labelEn: 'Small Equipment',
     icon: '💡',
-    color: '#00a3c4',
+    color: '#c0106e',
     image: '/products/cat-petit-equipement.jpg',
   },
   {
@@ -92,7 +92,7 @@ export const categories = [
     label: 'Grand Équipement',
     labelEn: 'Large Equipment',
     icon: '🏥',
-    color: '#0d3b6e',
+    color: '#4a1f6e',
     image: '/products/cat-grand-equipement.jpg',
   },
   {

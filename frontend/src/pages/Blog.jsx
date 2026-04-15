@@ -23,7 +23,7 @@ export default function Blog() {
   return (
     <div className="blog-page">
       {/* Page Hero */}
-      <div className="page-hero">
+      <div className="page-hero page-hero--blog">
         <div className="container page-hero-content">
           <h1 className="page-hero-title">{t('blog.page_title')}</h1>
           <p className="page-hero-subtitle">{t('blog.page_subtitle')}</p>
