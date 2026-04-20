@@ -628,11 +628,3 @@ npm run build
 - Translation keys: `snake_case` nested under namespaces
 
 ---
-
-_Generated for a Dental Supplies & Equipment Distribution website — Moroccan market, FR/EN bilingual._
-
-Now update Navbar, Footer, ContactCTA, WhatsAppFloat, and Contact page to use COMPANY:
-Web Search("Runyes 3DS V3 Pro intraoral scanner product image JPG PNG")
-Web Search("Itena Dentoclic tenon fibre de verre dentaire image produit site:itena-clinical.com OR site:go-dentaire.com")
-⎿ Did 0 searches in 437ms
-⎿ You've hit your limit · resets 12am (Africa/Casablanca)
