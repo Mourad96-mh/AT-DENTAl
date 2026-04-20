@@ -27,7 +27,7 @@ export default function Navbar() {
 
   const changeLang = (code) => {
     i18n.changeLanguage(code)
-    localStorage.setItem('dentapro-lang', code)
+    localStorage.setItem('atdental-lang', code)
     setMenuOpen(false)
   }
 
