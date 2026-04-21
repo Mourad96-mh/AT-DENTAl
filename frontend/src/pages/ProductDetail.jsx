@@ -6,6 +6,7 @@ import { categories } from '../data/categories'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '../utils/formatPrice'
 import { API_BASE } from '../config'
+import SEO from '../components/SEO'
 
 function normalize(p, lang) {
   return {
@@ -129,8 +130,45 @@ export default function ProductDetail() {
     else setQty(product.id, qty - 1)
   }
 
+  const productSchema = product ? {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    image: product.image,
+    brand: { '@type': 'Brand', name: product.brand },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'MAD',
+      price: product.price,
+      availability: 'https://schema.org/InStock',
+      seller: { '@type': 'Organization', name: 'AT Dental' },
+    },
+  } : null
+
+  const breadcrumbSchema = product ? {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://atdental.ma' },
+      { '@type': 'ListItem', position: 2, name: 'Produits', item: 'https://atdental.ma/products' },
+      { '@type': 'ListItem', position: 3, name: product.name, item: `https://atdental.ma/products/${product.id}` },
+    ],
+  } : null
+
   return (
     <div className="pd-page">
+      {product && (
+        <SEO
+          title={`${product.name} — ${product.brand}`}
+          description={`${product.description} Disponible chez AT Dental, distributeur de fournitures dentaires au Maroc. Livraison nationale.`}
+          keywords={`${product.name}, ${product.brand}, ${product.category}, fournitures dentaires maroc`}
+          canonical={`/products/${product.id}`}
+          ogImage={product.image}
+          ogType="product"
+          schema={[productSchema, breadcrumbSchema]}
+        />
+      )}
       {/* Breadcrumb */}
       <div className="pd-breadcrumb-bar">
         <div className="container pd-breadcrumb">

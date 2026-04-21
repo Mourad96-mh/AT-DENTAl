@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiStar, FiUsers, FiZap, FiShield, FiArrowRight } from 'react-icons/fi'
 import { brands } from '../data/brands'
+import SEO from '../components/SEO'
 
 const TEAM = [
   { name: 'Directeur Commercial',   initials: 'DC', role: 'Direction commerciale & stratégie' },
@@ -42,6 +43,12 @@ export default function About() {
 
   return (
     <div className="about-page" ref={ref}>
+      <SEO
+        title="À Propos — Votre Distributeur Dentaire de Confiance au Maroc"
+        description="Découvrez AT Dental, distributeur spécialisé en fournitures et équipements dentaires au Maroc depuis plus de 10 ans. Basé à Marrakech, nous servons les professionnels de santé dentaire dans tout le Maroc."
+        keywords="AT Dental maroc, distributeur dentaire marrakech, équipements dentaires maroc, fournitures dentaires professionnelles"
+        canonical="/about"
+      />
       {/* Page Hero */}
       <div className="page-hero page-hero--about">
         <div className="container page-hero-content">

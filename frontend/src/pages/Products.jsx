@@ -7,6 +7,7 @@ import { brands } from '../data/brands'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '../utils/formatPrice'
 import { API_BASE } from '../config'
+import SEO from '../components/SEO'
 
 export default function Products() {
   const { t, i18n } = useTranslation()
@@ -104,8 +105,22 @@ export default function Products() {
     else setQty(product.id, qty - 1)
   }
 
+  const activeCategoryData = categories.find((c) => c.id === activeCategory)
+  const pageTitle = activeCategoryData
+    ? `${activeCategoryData.label} — Fournitures Dentaires Maroc`
+    : 'Catalogue — Fournitures & Équipements Dentaires au Maroc'
+  const pageDesc = activeCategoryData
+    ? `Achetez des produits de ${activeCategoryData.label.toLowerCase()} de qualité professionnelle au Maroc. AT Dental distribue les meilleures marques dentaires avec livraison nationale.`
+    : 'Catalogue complet de fournitures et équipements dentaires au Maroc. Plus de 500 produits : composites, endodontie, turbines, fauteuils, stérilisation. Livraison dans tout le Maroc.'
+
   return (
     <div className="products-page">
+      <SEO
+        title={pageTitle}
+        description={pageDesc}
+        keywords="catalogue fournitures dentaires maroc, acheter équipements dentaires, prix matériaux dentaires maroc, turbine dentaire prix, composite dentaire maroc"
+        canonical="/products"
+      />
       {/* Page Hero */}
       <div className="page-hero page-hero--products">
         <div className="container page-hero-content">

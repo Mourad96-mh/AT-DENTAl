@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiClock, FiArrowRight } from 'react-icons/fi'
 import { blogPosts, blogCategories } from '../data/blog'
+import SEO from '../components/SEO'
 
 function formatDate(dateStr, lang) {
   const d = new Date(dateStr)
@@ -22,6 +23,12 @@ export default function Blog() {
 
   return (
     <div className="blog-page">
+      <SEO
+        title="Blog Dentaire — Conseils, Actualités & Équipements Dentaires"
+        description="Le blog AT Dental : conseils pratiques pour dentistes, actualités sur les équipements dentaires, guides d'utilisation des matériaux et innovations du secteur dentaire au Maroc."
+        keywords="blog dentaire maroc, conseils dentistes, actualité équipements dentaires, matériaux dentaires guide"
+        canonical="/blog"
+      />
       {/* Page Hero */}
       <div className="page-hero page-hero--blog">
         <div className="container page-hero-content">

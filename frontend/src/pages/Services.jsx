@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiPackage, FiTool, FiHeadphones, FiBookOpen, FiTruck, FiCheck, FiArrowRight } from 'react-icons/fi'
+import SEO from '../components/SEO'
 
 const SERVICE_ICONS = [FiPackage, FiTool, FiHeadphones, FiBookOpen, FiTruck]
 
@@ -35,6 +36,12 @@ export default function Services() {
 
   return (
     <div className="services-page" ref={ref}>
+      <SEO
+        title="Nos Services — Distribution, SAV & Formation Dentaire au Maroc"
+        description="AT Dental offre une gamme complète de services : distribution de fournitures dentaires, distribution d'équipements, service après-vente, formation technique et livraison dans tout le Maroc."
+        keywords="service après-vente dentaire maroc, distribution équipements dentaires, formation dentaire maroc, livraison fournitures dentaires"
+        canonical="/services"
+      />
       {/* Page Hero */}
       <div className="page-hero page-hero--services">
         <div className="container page-hero-content">

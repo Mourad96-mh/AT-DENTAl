@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FiMapPin, FiPhone, FiMail, FiClock, FiSend, FiCheck } from 'react-icons/fi'
 import { COMPANY } from '../data/company'
+import SEO from '../components/SEO'
 
 export default function Contact() {
   const { t, i18n } = useTranslation()
@@ -43,6 +44,13 @@ export default function Contact() {
   const subjects = ['subject_devis', 'subject_info', 'subject_sav', 'subject_partenariat', 'subject_autre']
 
   return (
+    <>
+      <SEO
+        title="Contact — Demande de Devis Fournitures Dentaires Maroc"
+        description="Contactez AT Dental pour vos fournitures et équipements dentaires. Demandez un devis, appelez le 06 93 37 34 89 ou envoyez-nous un message. Basé à Marrakech, livraison partout au Maroc."
+        keywords="contact AT Dental, devis fournitures dentaires, téléphone distributeur dentaire maroc, marrakech dentaire"
+        canonical="/contact"
+      />
     <div className="contact-page">
       {/* Page Hero */}
       <div className="page-hero page-hero--contact">
@@ -190,5 +198,6 @@ export default function Contact() {
         </div>
       </div>
     </div>
+    </>
   )
 }
