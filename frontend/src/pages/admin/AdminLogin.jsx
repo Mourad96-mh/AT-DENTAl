@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { useAuth } from '../../context/AuthContext'
 import { API_BASE } from '../../config'
 
@@ -35,6 +36,10 @@ export default function AdminLogin() {
 
   return (
     <div className="admin-login-page">
+      <Helmet>
+        <meta name="robots" content="noindex,nofollow" />
+        <title>Admin — AT Dental</title>
+      </Helmet>
       <div className="admin-login-card">
         <div className="admin-login-header">
           <h1>AT Dental</h1>

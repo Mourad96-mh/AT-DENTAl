@@ -95,6 +95,12 @@ export default function SEO({
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="fr_MA" />
 
+      {/* Geo — Local SEO */}
+      <meta name="geo.region" content="MA-05" />
+      <meta name="geo.placename" content="Marrakech, Maroc" />
+      <meta name="geo.position" content="31.6295;-7.9811" />
+      <meta name="ICBM" content="31.6295, -7.9811" />
+
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
