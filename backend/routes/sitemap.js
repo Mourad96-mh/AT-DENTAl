@@ -40,7 +40,7 @@ function urlEntry(path, changefreq, priority) {
 
 router.get('/', async (req, res) => {
   try {
-    const products = await Product.find({}, '_id').lean()
+    const products = await Product.find({}, '_id slug').lean()
 
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`
 
@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
     }
 
     for (const p of products) {
-      xml += urlEntry(`/products/${p._id}`, 'weekly', '0.7')
+      xml += urlEntry(`/products/${p.slug || p._id}`, 'weekly', '0.7')
     }
 
     for (const slug of BLOG_SLUGS) {

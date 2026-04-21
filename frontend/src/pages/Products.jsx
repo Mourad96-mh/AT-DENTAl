@@ -33,7 +33,7 @@ export default function Products() {
 
   // Normalize API product fields for the template
   const normalize = (p) => ({
-    id: p._id,
+    id: p.slug || p._id,
     name: p.name?.[lang] || p.name?.fr || '',
     description: p.description?.[lang] || p.description?.fr || '',
     brand: p.brand,

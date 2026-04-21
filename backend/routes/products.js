@@ -34,10 +34,14 @@ router.get('/', async (req, res) => {
   }
 })
 
-// GET /api/products/:id  (public)
-router.get('/:id', async (req, res) => {
+// GET /api/products/:idOrSlug  (public) — accepts MongoDB ID or slug
+router.get('/:idOrSlug', async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id)
+    const { idOrSlug } = req.params
+    const isId = /^[a-f\d]{24}$/i.test(idOrSlug)
+    const product = isId
+      ? await Product.findById(idOrSlug)
+      : await Product.findOne({ slug: idOrSlug })
     if (!product) return res.status(404).json({ message: 'Produit introuvable' })
     res.json(product)
   } catch (err) {

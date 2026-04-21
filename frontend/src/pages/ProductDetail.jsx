@@ -10,7 +10,7 @@ import SEO from '../components/SEO'
 
 function normalize(p, lang) {
   return {
-    id: p._id,
+    id: p.slug || p._id,
     name: p.name?.[lang] || p.name?.fr || '',
     description: p.description?.[lang] || p.description?.fr || '',
     brand: p.brand,

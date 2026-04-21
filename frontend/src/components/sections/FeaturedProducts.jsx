@@ -19,7 +19,7 @@ export default function FeaturedProducts() {
       .then((r) => r.json())
       .then((data) => {
         const items = (data.products || []).map((p) => ({
-          id: p._id,
+          id: p.slug || p._id,
           name: p.name?.[lang] || p.name?.fr || '',
           description: p.description?.[lang] || p.description?.fr || '',
           brand: p.brand,
