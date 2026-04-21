@@ -2,6 +2,9 @@ Options -MultiViews
 RewriteEngine On
 RewriteBase /
 
+# Redirect sitemap.xml to backend (dynamic — always reflects latest products)
+RewriteRule ^sitemap\.xml$ https://at-dental-api.onrender.com/sitemap.xml [R=302,L]
+
 # If the file or directory exists, serve it directly
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
