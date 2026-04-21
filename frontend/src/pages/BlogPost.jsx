@@ -2,6 +2,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { FiArrowLeft, FiClock, FiCalendar, FiArrowRight } from 'react-icons/fi'
 import { blogPosts, blogCategories } from '../data/blog'
+import SEO from '../components/SEO'
 
 function formatDate(dateStr, lang) {
   const d = new Date(dateStr)
@@ -43,8 +44,31 @@ export default function BlogPost() {
     .filter((p) => p.category === post.category && p.id !== post.id)
     .slice(0, 3)
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: lang === 'en' ? post.excerptEn : post.excerptFr,
+    image: post.image,
+    datePublished: post.date,
+    author: { '@type': 'Organization', name: 'AT Dental' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'AT Dental',
+      logo: { '@type': 'ImageObject', url: 'https://atdental.ma/images/logo.png' },
+    },
+  }
+
   return (
     <div className="blogpost-page">
+      <SEO
+        title={title}
+        description={lang === 'en' ? post.excerptEn : post.excerptFr}
+        canonical={`/blog/${post.slug}`}
+        ogImage={post.image}
+        ogType="article"
+        schema={articleSchema}
+      />
       {/* Hero */}
       <div className="blogpost-hero">
         <div className="container blogpost-hero-inner">
