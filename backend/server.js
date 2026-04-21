@@ -8,9 +8,13 @@ const Admin = require('./models/Admin')
 const app = express()
 
 // ── Middleware ────────────────────────────────────────────────
-const allowedOrigins = process.env.FRONTEND_URL
-  ? [process.env.FRONTEND_URL]
-  : ['http://localhost:5173', 'http://localhost:3000']
+const allowedOrigins = [
+  'https://atdental.ma',
+  'https://www.atdental.ma',
+  'http://localhost:5173',
+  'http://localhost:3000',
+  ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+]
 
 app.use(cors({
   origin: allowedOrigins,
