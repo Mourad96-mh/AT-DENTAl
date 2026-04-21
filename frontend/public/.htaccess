@@ -1,0 +1,13 @@
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
+
+# Serve existing files/dirs directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Do NOT rewrite static asset requests (let them 404 so onError handlers fire)
+RewriteRule \.(jpg|jpeg|png|gif|webp|svg|ico|css|js|woff2?|ttf|eot|pdf)$ - [L,NC]
+
+# Route everything else to index.html (React Router SPA)
+RewriteRule ^ index.html [L]
