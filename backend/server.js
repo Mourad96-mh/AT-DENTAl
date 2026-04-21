@@ -27,6 +27,7 @@ app.use('/api/auth', require('./routes/auth'))
 app.use('/api/products', require('./routes/products'))
 app.use('/api/leads', require('./routes/leads'))
 app.use('/api/upload', require('./routes/upload'))
+app.use('/sitemap.xml', require('./routes/sitemap'))
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }))
 
