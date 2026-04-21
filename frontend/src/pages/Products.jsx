@@ -238,7 +238,7 @@ export default function Products() {
                 <article className="product-grid-card" key={product.id}>
                   <div className="pgc-img-wrap">
                     <img
-                      src={product.image}
+                      src={product.image || 'https://placehold.co/400x260/e8f4f8/0d3b6e?text=Produit'}
                       alt={product.name}
                       className="pgc-img"
                       onError={(e) => { e.target.src = 'https://placehold.co/400x260/e8f4f8/0d3b6e?text=Produit' }}

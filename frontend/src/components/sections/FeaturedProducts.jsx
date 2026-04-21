@@ -65,7 +65,7 @@ export default function FeaturedProducts() {
           {doubled.map((product, i) => (
             <article className="product-card" key={`${product.id}-${i}`}>
               <img
-                src={product.image}
+                src={product.image || ''}
                 alt={product.name}
                 className="product-card-img"
                 onError={(e) => {

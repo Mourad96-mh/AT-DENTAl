@@ -151,7 +151,7 @@ export default function ProductDetail() {
         <div className="pd-image-col">
           <div className="pd-image-wrap">
             <img
-              src={product.image}
+              src={product.image || 'https://placehold.co/600x500/e8f4f8/0d3b6e?text=Produit'}
               alt={product.name}
               className="pd-image"
               onError={(e) => { e.target.src = 'https://placehold.co/600x500/e8f4f8/0d3b6e?text=Produit' }}
@@ -241,7 +241,7 @@ export default function ProductDetail() {
                 <Link to={`/products/${p.id}`} className="pd-related-card" key={p.id}>
                   <div className="pd-related-img-wrap">
                     <img
-                      src={p.image}
+                      src={p.image || 'https://placehold.co/300x220/e8f4f8/0d3b6e?text=Produit'}
                       alt={p.name}
                       onError={(e) => { e.target.src = 'https://placehold.co/300x220/e8f4f8/0d3b6e?text=Produit' }}
                     />
