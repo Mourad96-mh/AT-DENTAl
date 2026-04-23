@@ -26,7 +26,7 @@ export default function CartPanel() {
   const buildWhatsAppMessage = () => {
     const lines = items.map((i) => `• ${i.name} (${i.brand}) — qté: ${i.qty}`)
     const body = `Bonjour AT Dental,\n\nJe souhaite recevoir un devis pour les produits suivants :\n\n${lines.join('\n')}\n\nMerci.`
-    return `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(body)}`
+    return `https://wa.me/${COMPANY.phone1Whatsapp}?text=${encodeURIComponent(body)}`
   }
 
   return (
