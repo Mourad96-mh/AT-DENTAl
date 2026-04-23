@@ -17,6 +17,7 @@ function normalize(p, lang) {
     category: p.category,
     image: p.images?.[0] || '',
     price: p.price,
+    discount: p.discount || 0,
   }
 }
 
@@ -240,7 +241,17 @@ export default function ProductDetail() {
           </div>
 
           <div className="pd-price-row">
-            <span className="pd-price">{formatPrice(product.price)}</span>
+            {product.discount > 0 && (
+              <span className="badge--sale badge--sale-lg">-{product.discount}%</span>
+            )}
+            {product.discount > 0 ? (
+              <div className="pd-price-wrap">
+                <span className="price-old">{formatPrice(product.price)}</span>
+                <span className="pd-price price-sale">{formatPrice(Math.round(product.price * (1 - product.discount / 100)))}</span>
+              </div>
+            ) : (
+              <span className="pd-price">{formatPrice(product.price)}</span>
+            )}
           </div>
 
           {/* Cart controls */}
@@ -287,7 +298,17 @@ export default function ProductDetail() {
                   <div className="pd-related-body">
                     <span className="pd-related-brand">{p.brand}</span>
                     <h4 className="pd-related-name">{p.name}</h4>
-                    <span className="pd-related-price">{formatPrice(p.price)}</span>
+                    <div className="pd-related-price-wrap">
+                      {p.discount > 0 ? (
+                        <>
+                          <span className="badge--sale badge--sale-sm">-{p.discount}%</span>
+                          <span className="price-old">{formatPrice(p.price)}</span>
+                          <span className="pd-related-price price-sale">{formatPrice(Math.round(p.price * (1 - p.discount / 100)))}</span>
+                        </>
+                      ) : (
+                        <span className="pd-related-price">{formatPrice(p.price)}</span>
+                      )}
+                    </div>
                   </div>
                 </Link>
               ))}

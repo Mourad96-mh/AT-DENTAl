@@ -23,6 +23,7 @@ const EMPTY_FORM = {
   nameFr: '', nameEn: '',
   descFr: '', descEn: '',
   brand: '', category: '', price: '',
+  discount: 0,
   featured: false, inStock: true,
   tags: '',
 }
@@ -45,6 +46,7 @@ export default function ProductFormModal({ product, onClose, onSaved }) {
         brand: product.brand || '',
         category: product.category || '',
         price: product.price || '',
+        discount: product.discount ?? 0,
         featured: product.featured || false,
         inStock: product.inStock !== undefined ? product.inStock : true,
         tags: (product.tags || []).join(', '),
@@ -96,6 +98,7 @@ export default function ProductFormModal({ product, onClose, onSaved }) {
         brand: form.brand,
         category: form.category,
         price: Number(form.price),
+        discount: Number(form.discount) || 0,
         featured: form.featured,
         inStock: form.inStock,
         images,
@@ -152,6 +155,15 @@ export default function ProductFormModal({ product, onClose, onSaved }) {
             <div className="form-group">
               <label>Prix (MAD) *</label>
               <input type="number" name="price" value={form.price} onChange={handleChange} min="0" required />
+            </div>
+            <div className="form-group">
+              <label>Remise (%)</label>
+              <input type="number" name="discount" value={form.discount} onChange={handleChange} min="0" max="100" placeholder="0" />
+              {Number(form.discount) > 0 && Number(form.price) > 0 && (
+                <span className="form-hint">
+                  Prix soldé : <strong>{Math.round(Number(form.price) * (1 - Number(form.discount) / 100)).toLocaleString('fr-FR')} MAD</strong>
+                </span>
+              )}
             </div>
           </div>
 

@@ -166,7 +166,17 @@ export default function AdminProducts() {
                   </td>
                   <td>{p.brand}</td>
                   <td>{p.category}</td>
-                  <td>{p.price?.toLocaleString('fr-FR')} MAD</td>
+                  <td>
+                    <div>{p.price?.toLocaleString('fr-FR')} MAD</div>
+                    {p.discount > 0 && (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '4px' }}>
+                        <span className="badge--sale badge--sale-sm">-{p.discount}%</span>
+                        <span style={{ fontSize: '0.78rem', color: 'var(--color-success)', fontWeight: 600 }}>
+                          {Math.round(p.price * (1 - p.discount / 100)).toLocaleString('fr-FR')} MAD
+                        </span>
+                      </div>
+                    )}
+                  </td>
                   <td>
                     <button
                       className={`admin-toggle ${p.inStock ? 'admin-toggle--on' : 'admin-toggle--off'}`}

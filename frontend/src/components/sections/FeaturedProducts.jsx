@@ -26,6 +26,7 @@ export default function FeaturedProducts() {
           category: p.category,
           image: p.images?.[0] || '',
           price: p.price,
+          discount: p.discount || 0,
         }))
         setFeatured(items)
       })
@@ -64,16 +65,21 @@ export default function FeaturedProducts() {
         <div className="products-marquee">
           {doubled.map((product, i) => (
             <article className="product-card" key={`${product.id}-${i}`}>
-              <img
-                src={product.image || ''}
-                alt={product.name}
-                className="product-card-img"
-                onError={(e) => {
-                  e.target.style.display = 'none'
-                  e.target.nextSibling.style.display = 'flex'
-                }}
-              />
-              <div className="product-card-img-placeholder" style={{ display: 'none' }}>🦷</div>
+              <div className="product-card-img-wrap">
+                <img
+                  src={product.image || ''}
+                  alt={product.name}
+                  className="product-card-img"
+                  onError={(e) => {
+                    e.target.style.display = 'none'
+                    e.target.nextSibling.style.display = 'flex'
+                  }}
+                />
+                <div className="product-card-img-placeholder" style={{ display: 'none' }}>🦷</div>
+                {product.discount > 0 && (
+                  <span className="badge--sale">-{product.discount}%</span>
+                )}
+              </div>
               <div className="product-card-body">
                 <div className="product-card-badges">
                   <span className="badge badge--brand">{product.brand}</span>
@@ -81,7 +87,16 @@ export default function FeaturedProducts() {
                 </div>
                 <h3 className="product-card-name">{product.name}</h3>
                 <p className="product-card-desc">{product.description}</p>
-                <div className="product-card-price">{formatPrice(product.price)}</div>
+                <div className="product-card-price-wrap">
+                  {product.discount > 0 ? (
+                    <>
+                      <span className="price-old">{formatPrice(product.price)}</span>
+                      <span className="product-card-price price-sale">{formatPrice(Math.round(product.price * (1 - product.discount / 100)))}</span>
+                    </>
+                  ) : (
+                    <span className="product-card-price">{formatPrice(product.price)}</span>
+                  )}
+                </div>
                 <div className="product-card-actions">
                   <button
                     className={`product-card-add${added[product.id] ? ' added' : ''}`}

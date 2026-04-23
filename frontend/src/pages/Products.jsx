@@ -40,6 +40,7 @@ export default function Products() {
     category: p.category,
     image: p.images?.[0] || '',
     price: p.price,
+    discount: p.discount || 0,
   })
 
   // Lock body scroll when mobile sidebar is open
@@ -259,12 +260,24 @@ export default function Products() {
                       onError={(e) => { e.target.src = 'https://placehold.co/400x260/e8f4f8/0d3b6e?text=Produit' }}
                     />
                     <span className="pgc-category-badge">{product.category}</span>
+                    {product.discount > 0 && (
+                      <span className="badge--sale">-{product.discount}%</span>
+                    )}
                   </div>
                   <div className="pgc-body">
                     <span className="pgc-brand">{product.brand}</span>
                     <h3 className="pgc-name">{product.name}</h3>
                     <p className="pgc-desc">{product.description}</p>
-                    <div className="pgc-price">{formatPrice(product.price)}</div>
+                    <div className="pgc-price-wrap">
+                      {product.discount > 0 ? (
+                        <>
+                          <span className="price-old">{formatPrice(product.price)}</span>
+                          <span className="pgc-price price-sale">{formatPrice(Math.round(product.price * (1 - product.discount / 100)))}</span>
+                        </>
+                      ) : (
+                        <span className="pgc-price">{formatPrice(product.price)}</span>
+                      )}
+                    </div>
                     <div className="pgc-actions">
                       <button
                         className={`pgc-add-btn${added[product.id] ? ' added' : ''}`}

@@ -1382,14 +1382,31 @@
 /* Price */
 .pd-price-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
 }
 
 .pd-price {
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 900;
   color: var(--color-primary);
+}
+
+.pd-price-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.pd-related-price-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-1);
 }
 
 /* Cart actions */
