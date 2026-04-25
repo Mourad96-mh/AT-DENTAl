@@ -67,6 +67,9 @@ export default function Footer() {
         <div className="footer-bottom">
           <p>{t('footer.rights')}</p>
           <a href="#">{t('footer.privacy')}</a>
+          <a href="https://www.moudevpro.com" target="_blank" rel="noopener" title="Développeur Web Freelance Maroc">
+            Site créé par MouDev
+          </a>
         </div>
       </div>
     </footer>
