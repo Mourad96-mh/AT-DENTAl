@@ -3,7 +3,12 @@ RewriteEngine On
 RewriteBase /
 
 # Redirect sitemap.xml to backend (dynamic — always reflects latest products)
-RewriteRule ^sitemap\.xml$ https://at-dental-api.onrender.com/sitemap.xml [R=302,L]
+RewriteRule ^sitemap\.xml$ https://at-dental-api.onrender.com/sitemap.xml [R=301,L]
+
+# Dynamic rendering: send search engine crawlers to pre-rendered HTML
+RewriteCond %{HTTP_USER_AGENT} (googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebookexternalhit|twitterbot|linkedinbot|whatsapp|applebot|discordbot|telegrambot|slackbot) [NC]
+RewriteCond %{REQUEST_URI} ^/products/.+
+RewriteRule ^products/(.+)$ https://at-dental-api.onrender.com/prerender/products/$1 [R=302,L]
 
 # If the file or directory exists, serve it directly
 RewriteCond %{REQUEST_FILENAME} -f [OR]
