@@ -120,7 +120,7 @@ export default function Products() {
         title={pageTitle}
         description={pageDesc}
         keywords="catalogue fournitures dentaires maroc, acheter équipements dentaires, prix matériaux dentaires maroc, turbine dentaire prix, composite dentaire maroc"
-        canonical="/products"
+        canonical={activeCategory ? `/products?category=${activeCategory}` : '/products'}
       />
       {/* Page Hero */}
       <div className="page-hero page-hero--products">

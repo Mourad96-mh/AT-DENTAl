@@ -3,7 +3,7 @@ const Product = require('../models/Product')
 
 const router = express.Router()
 
-const BASE_URL = 'https://atdental.ma'
+const BASE_URL = 'https://at-dental.com'
 
 const STATIC_PAGES = [
   { path: '/',         changefreq: 'weekly',  priority: '1.0' },

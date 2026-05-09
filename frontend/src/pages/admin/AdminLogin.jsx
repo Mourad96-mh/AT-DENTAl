@@ -54,7 +54,7 @@ export default function AdminLogin() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="admin@atdental.ma"
+              placeholder="admin@at-dental.com"
               required
             />
           </div>

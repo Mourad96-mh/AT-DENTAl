@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async'
+import { useTranslation } from 'react-i18next'
 
 const SITE_NAME = 'AT Dental'
-const BASE_URL = 'https://atdental.ma'
+const BASE_URL = 'https://at-dental.com'
 const DEFAULT_IMAGE = `${BASE_URL}/images/logo.png`
 
 const ORG_SCHEMA = {
@@ -22,7 +23,6 @@ const ORG_SCHEMA = {
     addressLocality: 'Marrakech',
     addressCountry: 'MA',
   },
-  sameAs: [],
 }
 
 const LOCAL_BUSINESS_SCHEMA = {
@@ -31,6 +31,7 @@ const LOCAL_BUSINESS_SCHEMA = {
   name: 'AT Dental',
   description: 'Distribution de fournitures et équipements dentaires de haute qualité au Maroc.',
   url: BASE_URL,
+  image: DEFAULT_IMAGE,
   telephone: '+212693373489',
   email: 'atdental2024@gmail.com',
   address: {
@@ -60,6 +61,18 @@ const LOCAL_BUSINESS_SCHEMA = {
   },
 }
 
+const WEBSITE_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'AT Dental',
+  url: BASE_URL,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${BASE_URL}/products?search={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+}
+
 export default function SEO({
   title,
   description,
@@ -70,16 +83,19 @@ export default function SEO({
   schema,
   noindex = false,
 }) {
+  const { i18n } = useTranslation()
+  const lang = i18n.language === 'en' ? 'en' : 'fr'
+
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Fournitures & Équipements Dentaires au Maroc`
   const fullCanonical = canonical ? `${BASE_URL}${canonical}` : BASE_URL
   const image = ogImage || DEFAULT_IMAGE
 
   const extra = Array.isArray(schema) ? schema : schema ? [schema] : []
-  const schemas = [ORG_SCHEMA, LOCAL_BUSINESS_SCHEMA, ...extra].filter(Boolean)
+  const schemas = [ORG_SCHEMA, LOCAL_BUSINESS_SCHEMA, WEBSITE_SCHEMA, ...extra].filter(Boolean)
 
   return (
     <Helmet>
-      <html lang="fr" />
+      <html lang={lang} />
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
@@ -93,7 +109,7 @@ export default function SEO({
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content="fr_MA" />
+      <meta property="og:locale" content={lang === 'en' ? 'en_MA' : 'fr_MA'} />
 
       {/* Geo — Local SEO */}
       <meta name="geo.region" content="MA-05" />

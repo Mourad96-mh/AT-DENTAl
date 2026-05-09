@@ -51,7 +51,7 @@ export default function Home() {
     <>
       <SEO
         title="Fournitures & Équipements Dentaires au Maroc"
-        description="AT Dental — Distributeur spécialisé en fournitures et équipements dentaires au Maroc. Plus de 500 produits : composites, endodontie, turbines, fauteuils dentaires. Livraison nationale. Basé à Marrakech."
+        description="AT Dental — Distributeur de fournitures et équipements dentaires au Maroc. +500 produits : composites, endodontie, turbines, fauteuils. Livraison nationale."
         keywords="fournitures dentaires maroc, équipements dentaires marrakech, distributeur dentaire maroc, matériaux dentaires, turbine dentaire, fauteuil dentaire maroc"
         canonical="/"
         schema={HOME_FAQ_SCHEMA}

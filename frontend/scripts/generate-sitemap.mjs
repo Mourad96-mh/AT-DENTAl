@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const BASE_URL = 'https://atdental.ma'
+const BASE_URL = 'https://at-dental.com'
 const API_URL  = 'https://at-dental-api.onrender.com'
 const OUT_FILE = resolve(__dirname, '../public/sitemap.xml')
 

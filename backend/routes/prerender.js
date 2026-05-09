@@ -2,7 +2,7 @@ const express = require('express')
 const Product = require('../models/Product')
 
 const router = express.Router()
-const BASE_URL = 'https://atdental.ma'
+const BASE_URL = 'https://at-dental.com'
 
 function esc(str) {
   return String(str || '')

@@ -9,8 +9,8 @@ const app = express()
 
 // ── Middleware ────────────────────────────────────────────────
 const allowedOrigins = [
-  'https://atdental.ma',
-  'https://www.atdental.ma',
+  'https://at-dental.com',
+  'https://www.at-dental.com',
   'http://localhost:5173',
   'http://localhost:3000',
   'http://deepskyblue-fish-862243.hostingersite.com',

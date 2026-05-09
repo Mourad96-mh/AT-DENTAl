@@ -141,7 +141,7 @@ export default function ProductDetail() {
     offers: {
       '@type': 'Offer',
       priceCurrency: 'MAD',
-      price: product.price,
+      ...(product.price > 0 ? { price: product.price } : {}),
       availability: 'https://schema.org/InStock',
       seller: { '@type': 'Organization', name: 'AT Dental' },
     },
@@ -151,9 +151,9 @@ export default function ProductDetail() {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://atdental.ma' },
-      { '@type': 'ListItem', position: 2, name: 'Produits', item: 'https://atdental.ma/products' },
-      { '@type': 'ListItem', position: 3, name: product.name, item: `https://atdental.ma/products/${product.id}` },
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://at-dental.com' },
+      { '@type': 'ListItem', position: 2, name: 'Produits', item: 'https://at-dental.com/products' },
+      { '@type': 'ListItem', position: 3, name: product.name, item: `https://at-dental.com/products/${product.id}` },
     ],
   } : null
 

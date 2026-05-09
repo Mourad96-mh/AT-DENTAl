@@ -51,11 +51,12 @@ export default function BlogPost() {
     description: lang === 'en' ? post.excerptEn : post.excerptFr,
     image: post.image,
     datePublished: post.date,
+    dateModified: post.dateModified || post.date,
     author: { '@type': 'Organization', name: 'AT Dental' },
     publisher: {
       '@type': 'Organization',
       name: 'AT Dental',
-      logo: { '@type': 'ImageObject', url: 'https://atdental.ma/images/logo.png' },
+      logo: { '@type': 'ImageObject', url: 'https://at-dental.com/images/logo.png' },
     },
   }
 
@@ -146,6 +147,15 @@ export default function BlogPost() {
             <Link to="/contact" className="btn btn--accent" style={{ display: 'flex', justifyContent: 'center' }}>
               {t('common.contact_us')}
             </Link>
+            {post.productCategory && (
+              <Link
+                to={`/products?category=${post.productCategory}`}
+                className="btn btn--outline"
+                style={{ display: 'flex', justifyContent: 'center', marginTop: '0.75rem' }}
+              >
+                {t('common.see_products')}
+              </Link>
+            )}
           </div>
         </aside>
       </div>
