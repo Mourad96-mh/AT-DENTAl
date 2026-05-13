@@ -1,17 +1,137 @@
-Septodont: Pulpodent
-Ivoclar: Provis
-Sans Marque: Cavitemp
-Sans Marque: Cavitemp
-3M: Relyx Temp
-Itena: I Fil
-3M: Ketac Molar
-Meta: MD Chelcream
-Meta: MD Cleanser
-Sans Marque: Dolo Endo Gel
-Meta: Metapex+
-Itena: Biner LC
-Micro Mega: R-Endo R1/R2/R3
-Sans Marque: Orodeka
-Micro Mega:Revo S+
-Sans Marque: Lampe Blanchiment sans Support
-COXO: Lampe COXO
+RESTAURATION
+palfique lx5  Tokoyama
+P60   3M
+Solar x  Gc
+Te économe      Ivoclar 
+Denfil  Denfil
+Megafil
+Empresse   ivoclar 
+Tetric bulk fil    Tetric
+Z350       3M
+Z350 flow    3M
+Gradia flow    Gc
+Tetric n flow      Ivoclar
+Flow d Line     D Line 
+I- flow     I dental 
+Compoflow
+Compomax    D tech
+
+RESAURATION & RECONSTITUTION 
+Adhésif 3M single bond 2 
+Adhésif 3M Universal 
+Adhésif g premio bond 
+Adhésif Solare universal bond 
+Adhésif Tetric n bond 
+Adhésif bisco all bond universal 
+Adhésif z prime bisco 
+Adhésif te économe 
+Adhésif monobond
+Adhésif d Line 
+Acide ultra etch 
+Acide Dentaflux 60 g
+Acide spident 
+Acide I gel 
+Acide porcelain etch avec silane 
+Porcelain etch sans silane 
+Condac porcelana 
+Prosil 
+Protemp 
+Dentocrown 
+Acrytemp 
+Bright temporary 
+Unifast 3 
+Visalys temp
+
+Bisco micro esthethic
+Bisco nano fil unique 
+Bisco nano fil flow  
+Bisco bulk fil 
+Bisco Nano fil N 
+Bisco Micro esthétique gingiva
+Bisco porcelain etchant
+Uni etch
+Dentocore  body itena 
+Core flo bisco
+All cem core  
+Gradia core gc 
+Repo core dc bisco
+Fibre dentoclic 
+Fibre itena 
+Fibre vivadent
+Fibre post
+Fibre post 3M 
+Forêt largo 
+forêt Gates
+Collage des facettes 
+Choice 2 kit bisco 
+Intraoral repair kit bisco 
+Relyx veneer 3M 
+Variolink N Ivoclar 
+G cem veneer  GC
+FINITION ABRATION ET FRAISE 
+detartrine Z 
+Diamond polish 
+Diamond Excel 
+Spectra 
+Dentaflux 
+Detartrex
+Cavex prophy paste 
+Disque soflex 3M 
+Perfect polish itena 
+Cupule dochem 
+Composite polish kit 
+Kit disque tor 
+Brossette de polissage 
+Cupule jota 
+Fraise jota diamantee / endo-z / zekrya / a os 
+Fraise mani diamantee / endo-z / zekrya 
+Fraise horico diamantee / endo-z / zekrya / a os
+INSTRUMENT FALCON 
+manches miroirs à bouche 
+Sonde 
+Série de daviers 10 pièces 
+Décolleur 
+Curette 
+Burnissoirs 
+Spatules à ciment 
+Spatule de bouche 
+Seringue d’anesthésie 
+Rap à os 
+Arrache couronne 
+Castroviego 
+Miroirs à bouche 
+Plateaux grand / petit 
+Sondes paadontales graduées 
+Élévateurs à racine 
+Chompret-syndesmotomes 
+Porte-aiguilles 
+Pince Mathieu 
+Precelle Mathieu 
+Precelle chirjucales 
+Ciseau 
+Excavateur 
+Fouloir 
+Kit digue
+Petit équipement 
+Moteur endo radar pro woodpecker 
+Moteur endo dte 
+Moteur endo COXO 
+Moteur endo nsk dt 
+Moteur endo ionyx 
+Lamp o star  
+Lamp I led ll 
+Lamp o light 
+Lamp COXO nano 
+Lamp valo X
+Détartreur woodpecker UDS
+Detartreur D8 dte 
+Detartreur max peizo 7+ 
+Turbine Apple dent led/sans led 
+Turbine skyma led/sans led 
+Turbine COXO led/sans led 
+Turbine nsk led/sans led 
+Kit rotatif 3pcs skyma class a/ skyma class b 
+Contre angle skyma class a 
+Contre angle skyma class b 
+Aeropolisseur nsk 
+Aeropolisseur woodpecker
