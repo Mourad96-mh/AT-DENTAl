@@ -1,13 +1,8 @@
-Falcon Fouloir
-Falcon Excavateur
-Falcon Ciseau à Os
-Falcon Précelle Mathieu
-Falcon Pince Mathieu
-Falcon Porte-aiguilles
-Falcon Chompret Syndesmotome
-Falcon Élévateur à Racine
-Falcon Sonde Parodontale Graduée
-Falcon Castroviejo
-Falcon Râpe à Os
-Falcon Manches Miroirs
-Septodont Détartrex
+Falcon Spatule de Bouche
+Falcon Spatule à Ciment
+Falcon Burnissoir
+Falcon Curette
+Falcon Décolleur
+Falcon Sonde Dentaire
+AT Dental Diamond Excel
+Bisco Bisco Bulk Fil
