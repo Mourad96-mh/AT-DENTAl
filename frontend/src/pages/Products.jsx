@@ -25,7 +25,7 @@ export default function Products() {
   const lang = i18n.language === 'en' ? 'en' : 'fr'
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/products?limit=200`)
+    fetch(`${API_BASE}/api/products?limit=1000`)
       .then((r) => r.json())
       .then((data) => { setProducts(data.products || []); setLoading(false) })
       .catch(() => setLoading(false))
