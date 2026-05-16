@@ -214,6 +214,15 @@
     "total_price": "Total estimé",
     "article": "article",
     "whatsapp_cta": "Demander un devis via WhatsApp",
-    "clear": "Vider le panier"
+    "clear": "Vider le panier",
+    "checkout_title": "Envoyer ma demande",
+    "checkout_name": "Nom complet",
+    "checkout_phone": "Téléphone",
+    "checkout_name_placeholder": "Votre nom",
+    "checkout_phone_placeholder": "Ex: 06 00 00 00 00",
+    "checkout_submit": "Confirmer et envoyer via WhatsApp",
+    "checkout_cancel": "Annuler",
+    "checkout_name_required": "Le nom est requis.",
+    "checkout_phone_required": "Le téléphone est requis."
   }
 }

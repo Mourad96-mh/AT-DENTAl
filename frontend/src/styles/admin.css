@@ -303,6 +303,30 @@
 .lead-product { font-size: var(--text-xs); color: var(--color-accent); margin-top: 2px; }
 .lead-qty { font-size: var(--text-xs); color: var(--color-text-muted); }
 
+.lead-cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lead-cart-item {
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.lead-cart-item-brand {
+  color: var(--color-text-muted);
+}
+
+.admin-badge--cart {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
 /* ── States ───────────────────────────────────── */
 .admin-loading,
 .admin-empty {

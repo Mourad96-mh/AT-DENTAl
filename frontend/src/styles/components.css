@@ -1634,6 +1634,62 @@
 
 .cart-clear-btn:hover { color: var(--color-error); }
 
+/* Cart checkout overlay */
+.cart-checkout-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.97);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+}
+
+.cart-checkout-modal {
+  width: 100%;
+}
+
+.cart-checkout-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-5);
+  text-align: center;
+}
+
+.cart-checkout-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.cart-checkout-field label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+}
+
+.cart-checkout-field input {
+  padding: var(--space-3) var(--space-4);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.cart-checkout-field input:focus {
+  border-color: var(--color-accent);
+}
+
+.cart-checkout-error {
+  font-size: var(--text-xs);
+  color: var(--color-error);
+}
+
 /* =============================================
    PRODUCT CARD ACTIONS (Products page)
    ============================================= */

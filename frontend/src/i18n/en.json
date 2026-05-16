@@ -214,6 +214,15 @@
     "total_price": "Estimated total",
     "article": "item",
     "whatsapp_cta": "Request a quote via WhatsApp",
-    "clear": "Clear cart"
+    "clear": "Clear cart",
+    "checkout_title": "Send my request",
+    "checkout_name": "Full name",
+    "checkout_phone": "Phone",
+    "checkout_name_placeholder": "Your name",
+    "checkout_phone_placeholder": "E.g. 06 00 00 00 00",
+    "checkout_submit": "Confirm and send via WhatsApp",
+    "checkout_cancel": "Cancel",
+    "checkout_name_required": "Name is required.",
+    "checkout_phone_required": "Phone is required."
   }
 }

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '../../context/AuthContext'
 
 const STATUS_LABELS = { new: 'Nouveau', contacted: 'Contacté', closed: 'Clôturé' }
-const SOURCE_LABELS = { contact: 'Contact', quote: 'Devis', product: 'Produit' }
+const SOURCE_LABELS = { contact: 'Contact', quote: 'Devis', product: 'Produit', cart: 'Panier' }
 
 export default function AdminLeads() {
   const { authFetch } = useAuth()
@@ -86,6 +86,7 @@ export default function AdminLeads() {
           <option value="contact">Contact</option>
           <option value="quote">Devis</option>
           <option value="product">Produit</option>
+          <option value="cart">Panier</option>
         </select>
       </div>
 
@@ -102,7 +103,7 @@ export default function AdminLeads() {
                 <th>Source</th>
                 <th>Nom</th>
                 <th>Contact</th>
-                <th>Sujet / Produit</th>
+                <th>Sujet / Produits</th>
                 <th>Message</th>
                 <th>Statut</th>
                 <th>Actions</th>
@@ -123,9 +124,23 @@ export default function AdminLeads() {
                     <div>{lead.phone || '—'}</div>
                   </td>
                   <td>
-                    <div>{lead.subject || '—'}</div>
-                    {lead.productName && <div className="lead-product">{lead.productName}</div>}
-                    {lead.quantity && <div className="lead-qty">Qté: {lead.quantity}</div>}
+                    {lead.source === 'cart' && lead.items && lead.items.length > 0 ? (
+                      <ul className="lead-cart-items">
+                        {lead.items.map((item, idx) => (
+                          <li key={idx} className="lead-cart-item">
+                            <span className="lead-cart-item-name">{item.name}</span>
+                            {item.brand && <span className="lead-cart-item-brand"> ({item.brand})</span>}
+                            <span className="lead-qty"> × {item.qty}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <>
+                        <div>{lead.subject || '—'}</div>
+                        {lead.productName && <div className="lead-product">{lead.productName}</div>}
+                        {lead.quantity && <div className="lead-qty">Qté: {lead.quantity}</div>}
+                      </>
+                    )}
                   </td>
                   <td className="lead-message">{lead.message || '—'}</td>
                   <td>
