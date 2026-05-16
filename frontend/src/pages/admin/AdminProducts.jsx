@@ -15,7 +15,7 @@ export default function AdminProducts() {
 
   const fetchProducts = useCallback(async () => {
     setLoading(true)
-    const params = new URLSearchParams({ limit: 200 })
+    const params = new URLSearchParams({ limit: 2000 })
     if (search) params.set('search', search)
     if (filterCategory) params.set('category', filterCategory)
     if (filterStock === 'true') params.set('inStock', 'true')
