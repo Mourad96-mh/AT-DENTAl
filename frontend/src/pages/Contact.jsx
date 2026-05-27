@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FiMapPin, FiPhone, FiMail, FiClock, FiSend, FiCheck } from 'react-icons/fi'
 import { COMPANY } from '../data/company'
+import { API_BASE } from '../config'
 import SEO from '../components/SEO'
 
 export default function Contact() {
@@ -26,12 +27,29 @@ export default function Contact() {
     if (errors[e.target.name]) setErrors((er) => ({ ...er, [e.target.name]: '' }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setSending(true)
-    setTimeout(() => { setSending(false); setSubmitted(true) }, 1200)
+    try {
+      await fetch(`${API_BASE}/api/leads`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'contact',
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          subject: form.subject,
+          message: form.message.trim(),
+        }),
+      })
+    } catch (_) {
+      // silently fail — still show success to user
+    }
+    setSending(false)
+    setSubmitted(true)
   }
 
   const infoCards = [
