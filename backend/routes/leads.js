@@ -4,11 +4,36 @@ const protect = require('../middleware/auth')
 
 const router = express.Router()
 
+async function pushToGoogleSheet(lead) {
+  const url = process.env.GOOGLE_SHEET_WEBHOOK
+  if (!url) return
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        source: lead.source,
+        name: lead.name,
+        phone: lead.phone,
+        email: lead.email,
+        subject: lead.subject,
+        productName: lead.productName,
+        quantity: lead.quantity,
+        message: lead.message,
+        items: lead.items || [],
+      }),
+    })
+  } catch (err) {
+    console.error('Google Sheet webhook error:', err.message)
+  }
+}
+
 // POST /api/leads  (public — contact/quote form)
 router.post('/', async (req, res) => {
   try {
     const lead = await Lead.create(req.body)
     res.status(201).json(lead)
+    pushToGoogleSheet(lead)
   } catch (err) {
     res.status(400).json({ message: err.message })
   }
