@@ -13,7 +13,7 @@ export default function CartPanel() {
   const totalPrice = items.reduce((sum, i) => sum + i.price * i.qty, 0)
 
   const [showCheckout, setShowCheckout] = useState(false)
-  const [form, setForm] = useState({ name: '', phone: '' })
+  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' })
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
 
@@ -35,9 +35,11 @@ export default function CartPanel() {
     return () => { document.body.style.overflow = '' }
   }, [panelOpen])
 
-  const buildWhatsAppUrl = (name, phone) => {
+  const buildWhatsAppUrl = (name, phone, email, message) => {
     const lines = items.map((i) => `• ${i.name} (${i.brand}) — qté: ${i.qty}`)
-    const body = `Bonjour AT Dental,\n\nJe souhaite recevoir un devis pour les produits suivants :\n\n${lines.join('\n')}\n\nNom: ${name}\nTél: ${phone}\n\nMerci.`
+    const emailLine = email ? `\nEmail: ${email}` : ''
+    const messageLine = message ? `\n\n${message}` : ''
+    const body = `Bonjour AT Dental,\n\nJe souhaite recevoir un devis pour les produits suivants :\n\n${lines.join('\n')}\n\nNom: ${name}\nTél: ${phone}${emailLine}${messageLine}\n\nMerci.`
     return `https://wa.me/${COMPANY.phone1Whatsapp}?text=${encodeURIComponent(body)}`
   }
 
@@ -62,6 +64,8 @@ export default function CartPanel() {
           source: 'cart',
           name: form.name.trim(),
           phone: form.phone.trim(),
+          email: form.email.trim(),
+          message: form.message.trim(),
           items: items.map(({ name, brand, qty }) => ({ name, brand, qty })),
         }),
       })
@@ -69,10 +73,10 @@ export default function CartPanel() {
       // silently fail — WhatsApp still opens
     }
 
-    const waUrl = buildWhatsAppUrl(form.name.trim(), form.phone.trim())
+    const waUrl = buildWhatsAppUrl(form.name.trim(), form.phone.trim(), form.email.trim(), form.message.trim())
     clearCart()
     setShowCheckout(false)
-    setForm({ name: '', phone: '' })
+    setForm({ name: '', phone: '', email: '', message: '' })
     setPanelOpen(false)
     window.open(waUrl, '_blank', 'noopener,noreferrer')
     setSubmitting(false)
@@ -130,6 +134,26 @@ export default function CartPanel() {
                     onChange={(e) => { setForm((f) => ({ ...f, phone: e.target.value })); setErrors((err) => ({ ...err, phone: '' })) }}
                   />
                   {errors.phone && <span className="cart-checkout-error">{errors.phone}</span>}
+                </div>
+                <div className="cart-checkout-field">
+                  <label htmlFor="co-email">{t('cart.checkout_email')}</label>
+                  <input
+                    id="co-email"
+                    type="email"
+                    placeholder={t('cart.checkout_email_placeholder')}
+                    value={form.email}
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                  />
+                </div>
+                <div className="cart-checkout-field">
+                  <label htmlFor="co-message">{t('cart.checkout_message')}</label>
+                  <textarea
+                    id="co-message"
+                    placeholder={t('cart.checkout_message_placeholder')}
+                    value={form.message}
+                    onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                    rows={3}
+                  />
                 </div>
                 <button type="submit" className="btn btn--accent w-full cart-whatsapp-btn" disabled={submitting}>
                   <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">

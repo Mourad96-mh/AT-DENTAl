@@ -222,6 +222,10 @@
     "checkout_phone_placeholder": "Ex: 06 00 00 00 00",
     "checkout_submit": "Confirmer et envoyer via WhatsApp",
     "checkout_cancel": "Annuler",
+    "checkout_email": "Email (optionnel)",
+    "checkout_email_placeholder": "votre@email.ma",
+    "checkout_message": "Message (optionnel)",
+    "checkout_message_placeholder": "Précisez vos besoins...",
     "checkout_name_required": "Le nom est requis.",
     "checkout_phone_required": "Le téléphone est requis."
   }
