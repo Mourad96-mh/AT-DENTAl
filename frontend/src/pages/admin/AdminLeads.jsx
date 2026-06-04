@@ -48,11 +48,68 @@ export default function AdminLeads() {
     closed: leads.filter((l) => l.status === 'closed').length,
   }
 
+  const exportCsv = () => {
+    const headers = [
+      'Date',
+      'Source',
+      'Nom',
+      'Email',
+      'Téléphone',
+      'Sujet',
+      'Produits',
+      'Quantité',
+      'Message',
+      'Statut',
+    ]
+    const escape = (value) => `"${String(value ?? '').replace(/"/g, '""')}"`
+    const formatProducts = (lead) => {
+      if (lead.source === 'cart' && lead.items && lead.items.length > 0) {
+        return lead.items
+          .map((i) => `${i.name}${i.brand ? ` (${i.brand})` : ''} x${i.qty}`)
+          .join(' | ')
+      }
+      return lead.productName || lead.subject || ''
+    }
+    const rows = leads.map((lead) => [
+      new Date(lead.createdAt).toLocaleString('fr-FR'),
+      SOURCE_LABELS[lead.source] || lead.source,
+      lead.name || '',
+      lead.email || '',
+      lead.phone || '',
+      lead.subject || '',
+      formatProducts(lead),
+      lead.quantity || '',
+      lead.message || '',
+      STATUS_LABELS[lead.status] || lead.status,
+    ])
+    const csv = [headers, ...rows]
+      .map((row) => row.map(escape).join(','))
+      .join('\r\n')
+    // Prepend BOM so Excel / Google Sheets read accents as UTF-8
+    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `leads-${new Date().toISOString().slice(0, 10)}.csv`
+    link.click()
+    URL.revokeObjectURL(url)
+  }
+
   return (
     <div className="admin-page">
       <div className="admin-page__header">
         <h1>Demandes & Contacts</h1>
-        <span className="admin-refresh-hint">Auto-refresh 30s</span>
+        <div className="admin-page__header-actions">
+          <span className="admin-refresh-hint">Auto-refresh 30s</span>
+          <button
+            className="admin-btn-export"
+            onClick={exportCsv}
+            disabled={leads.length === 0}
+            title="Exporter en CSV (Google Sheets / Excel)"
+          >
+            ⬇ Exporter CSV ({leads.length})
+          </button>
+        </div>
       </div>
 
       <div className="admin-stats">
